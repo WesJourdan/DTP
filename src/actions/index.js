@@ -1,10 +1,6 @@
 import axios from "axios";
-// import {googleApiKey, cx} from "../private";
-
-const azureApiKey = '494bc014b5214faf82e4594ba9c944d0';
-const googleApiKey = 'AIzaSyA4qQBPVuE0MmhFwVvBszjDNRgxHabksxI';
-// cx is the id of our google custom search engine and must be included on all requests.
-const cx = 'cx=015567834959964238502:84rnknutzk8';
+import googleApiKey from "../private/api-keys.js";
+import cx from "../private/api-keys.js";
 
 export const FETCH_IMAGE = "fetch_image";
 
