@@ -10,18 +10,22 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
+const store = createStoreWithMiddleware(reducers);
+
+
+
 const App = () => {
   return  (
     <div className="container">
       <SearchBar />
-      <GameBoard />
+      {/* <GameBoard /> */}
     </div>
   );
 }
 
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <App />
   </Provider>
   , document.getElementById('root'));
