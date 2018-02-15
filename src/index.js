@@ -12,12 +12,16 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 const App = () => {
   return  (
-    <Provider store={createStoreWithMiddleware(reducers)}>
+    <div className="container">
       <SearchBar />
       <GameBoard />
-    </Provider>
+    </div>
   );
 }
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <App />
+  </Provider>
+  , document.getElementById('root'));
