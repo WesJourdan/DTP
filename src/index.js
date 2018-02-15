@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import promise from "redux-promise";
 import reducers from "./reducers";
 import GameBoard from "./components/game-board";
+import SearchBar from "./components/search-bar";
 import 'bootstrap/dist/css/bootstrap.css';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
