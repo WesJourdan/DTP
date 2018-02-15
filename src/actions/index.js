@@ -11,19 +11,26 @@ const CAPTION_ROOT_URL = `https://westus.api.cognitive.microsoft.com/vision/v1.0
 
 export function fetchImage(searchTerm) {
   const request = axios.get(`${IMAGE_ROOT_URL}key=${googleApiKey}&${cx}&q=${searchTerm}&searchType=image`);
-  debugger;
-  return {
-    type: FETCH_IMAGE,
-    payload: request
-  };
+
 }
 
 export function fetchCaption(imageUrl) {
-  const request = axios.post(CAPTION_ROOT_URL, {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
-
+  const request = axios({
+    method: 'post',
+    beforeSend: function(xhrObj){
+                 // Request headers
+                 xhrObj.setRequestHeader("Content-Type","application/json");
+                 xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{subscription key}");
+                },
+    url: CAPTION_ROOT_URL,
+    data: {
+      url: {imageUrl}
+    }
+  });
+  return {
+    type: FETCH_CAPTION,
+    payload: request
+  };
 }
 
 export function handleNextStep(steps) {
