@@ -26,7 +26,7 @@ class SearchBar extends Component {
         <form onSubmit={this.onFormSubmit}>
           <input
             type="text"
-            value="this.state.value"
+            value={this.state.value}
             placeholder="Enter a search term"
             onChange={this.onInputChange}
           />
