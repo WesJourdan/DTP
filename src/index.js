@@ -10,13 +10,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 const App = () => {
-  return  <GameBoard />
-  // (
-  //   // <Provider store={createStoreWithMiddleware(reducers)}>
-  //     {/* <SearchBar /> */}
-  //
-  //   {/* </Provider> */}
-  // );
+  return  (
+    <Provider store={createStoreWithMiddleware(reducers)}>
+      <SearchBar />
+      <GameBoard />
+    </Provider>
+  );
 }
 
 
