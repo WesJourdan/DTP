@@ -44,7 +44,6 @@ class GameBoard extends Component {
     let nextButton = null;
     let threadLength = this.props.steps.length;
     let lastStep = this.props.steps[threadLength - 1];
-      console.log(`lastStep: ${lastStep}`)
     if (threadLength > 0 && threadLength < 6) {
       nextButton = (
         <div className="col-md-3 w-25 m-4 d-flex align-items-center justify-content-center">
