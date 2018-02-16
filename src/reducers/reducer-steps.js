@@ -21,13 +21,18 @@ export default function(state = [], action) {
         }
       };
     case FETCH_CAPTION:
-      let caption = action.payload.data.description.captions[0].text;
-      console.log(caption);
-      if (caption) {
-        let newSteps = [...state, {text: caption, type: "caption"}]
-        console.log(newSteps);
-        return newSteps;
-      }
+    console.log(action.payload);
+     if (!action.payload.data) {
+       window.alert("We're sorry, the APIs aren't playing nice. Game will be reset.")
+       return [];
+     }
+    let caption = action.payload.data.description.captions[0].text;
+
+    if (caption) {
+      let newSteps = [...state, {text: caption, type: "caption"}]
+      console.log(newSteps);
+      return newSteps;
+    }
     case RESET_GAME:
       return [];
     default:

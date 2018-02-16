@@ -27,8 +27,7 @@ export function fetchCaption(imageUrl) {
   url: CAPTION_ROOT_URL,
   data: {"url":imageUrl},
   headers: {"Ocp-Apim-Subscription-Key": azureApiKey}
-  })
-  console.log(request);
+})
   return {
     type: FETCH_CAPTION,
     payload: request
