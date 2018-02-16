@@ -20,12 +20,12 @@ class SearchBar extends Component {
   }
 
   handleChange(event) {
+    this.props.resetGame()
     this.setState({numberOfSteps: event.target.value})
   }
 
   onFormSubmit(event) {
     event.preventDefault();
-    //call appropriate function. for now, that's the image fetch function.
     this.props.initialSearch(this.state.term);
     this.props.setNumberOfSteps(this.state.numberOfSteps);
     this.setState({ term: '' });
@@ -33,7 +33,10 @@ class SearchBar extends Component {
 
   render () {
     return (
+
       <div className="text-center">
+        <h1>Digital Telephone Pictionary Game</h1>
+        <h5>Please choose the number of turns you want and enter a search term to start the game.</h5>
         <form className="m-3 d-inline" onSubmit={this.onFormSubmit.bind(this)}>
 
           <input
@@ -45,10 +48,10 @@ class SearchBar extends Component {
           />
 
           <select className="form-control d-inline w-25" value={this.state.numberOfSteps} onChange={this.handleChange.bind(this)}>
-            <option value="6">6 steps</option>
-            <option value="9">9 steps</option>
-            <option value="12">12 steps</option>
-            <option value="15">15 steps</option>
+            <option value="6">6 turns</option>
+            <option value="9">9 turns</option>
+            <option value="12">12 turns</option>
+            <option value="15">15 turns</option>
           </select>
 
           <span className="input-group-btn">

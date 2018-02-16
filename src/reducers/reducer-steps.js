@@ -1,4 +1,3 @@
-import _ from "lodash";
 import {FETCH_IMAGE} from "../actions";
 import {FETCH_CAPTION} from "../actions";
 import {INITIAL_SEARCH} from "../actions";
@@ -19,12 +18,12 @@ export default function(state = [], action) {
       let imageArray = action.payload.data.items
       for (let i = 0; i < imageArray.length; i++ ) {
         let image = imageArray[i];
-        if (image.mime == "image/jpeg") {
+        if (image.mime === "image/jpeg") {
           let newSteps = [...state, {url: image.link, type: "image"}]
           return newSteps;
         }
       };
-
+    break;
     case FETCH_CAPTION:
       if (action.payload instanceof Error) {
         window.alert("We're sorry, the APIs aren't playing nice. The game will be reset.")
@@ -36,7 +35,7 @@ export default function(state = [], action) {
         let newSteps = [...state, {text: caption, type: "caption"}]
         return newSteps;
       }
-
+    break;
     case RESET_GAME:
       return [];
 
