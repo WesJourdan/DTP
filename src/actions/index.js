@@ -5,6 +5,7 @@ import {azureApiKey} from "../private/api-keys";
 
 export const FETCH_IMAGE = "fetch_image";
 export const FETCH_CAPTION = "fetch_caption";
+export const INTIAL_SEARCH = "initial_search";
 
 const IMAGE_ROOT_URL = "https://www.googleapis.com/customsearch/v1?";
 const CAPTION_ROOT_URL = `https://eastus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description`;
@@ -31,7 +32,13 @@ export function fetchCaption(imageUrl) {
     type: FETCH_CAPTION,
     payload: request
   };
+}
 
+export function intialSearch(searchTerm) {
+  return {
+    type: INITIAL_SEARCH,
+    payload: searchTerm
+  }
 }
 
 // export function handleNextStep(steps) {
