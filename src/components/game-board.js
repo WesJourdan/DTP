@@ -5,16 +5,16 @@ import { bindActionCreators } from "redux";
 
 //export each step as a div
 class GameBoard extends Component {
-// return this.props.steps.map( (step, index, stepsArray) => {
-  renderSteps() {
 
+  renderSteps() {
     return this.props.steps.map( (step, index) => {
+
   //steps are either images or captions. render them based on type.
       let stepNode = null;
       if (step.type === 'image'){
         stepNode = (
-          <div className="col-md-3 w-50 m-4 d-flex align-items-center step-node border border-primary rounded" key={step.index}>
-              <img className="img img-fluid" src={step.url} />
+          <div className="col-md-3 w-50 m-4 d-flex align-items-center step-node border border-primary rounded" key={index}>
+              <img className="img img-fluid" src={step.url} alt={step.type} />
           </div>
         );
       } else {
@@ -30,16 +30,8 @@ class GameBoard extends Component {
 
   }
 
-  renderLoading () {
-    return (
-      <div className="col-md-3 w-25 m-4 d-flex align-items-center justify-content-center">
-        <img className="img img-fluid" src="https://cdn.dribbble.com/users/160117/screenshots/3197970/main.gif" />
-      </div>
-    )
-  }
-
   render() {
-    //check if steps array has reached its full length of 6. If not, add a "next" button.
+    //check if steps array has reached its full length of If not, add a "next" button.
 
     let nextButton = null;
     let threadLength = this.props.steps.length;
@@ -53,7 +45,7 @@ class GameBoard extends Component {
               ? this.props.fetchImage(lastStep.text)
               : this.props.fetchCaption(lastStep.url)}
             }>
-            Next
+            Next turn
           </button>
         </div>
     )};
@@ -78,12 +70,7 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch) {
-
   return bindActionCreators({ fetchImage, fetchCaption },  dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameBoard);
-
-
-  //to test code without accessing store, comment out mapStateToProps and use the export statement below instead.
-// export default GameBoard
