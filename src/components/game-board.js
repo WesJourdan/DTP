@@ -3,21 +3,6 @@ import { connect } from "react-redux";
 import { fetchImage, fetchCaption } from "../actions/index";
 import { bindActionCreators } from "redux";
 
-//use the version of steps below for testing purposes only. then change steps back to this.props.steps
-// let steps = [
-//   {type: 'image', url: 'https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/d/domestic-dog_thumb.jpg'},
-//   {type: 'caption', text: "a Qdog"}
-// ]
-//
-//
-// steps.push({type: 'image', url: 'http://cdn2-www.dogtime.com/assets/uploads/2011/01/file_23244_what-is-the-appenzeller-sennenhunde-dog-300x189.jpg'});
-//
-// steps.push({type: 'caption', text: `help I'm in react purgatory forever`})
-//
-// steps.push({type: 'image', url: 'http://cdn2-www.dogtime.com/assets/uploads/2011/01/file_23244_what-is-the-appenzeller-sennenhunde-dog-300x189.jpg'});
-
-// steps.push({type: 'caption', text: `help I'm in react purgatory forever`})
-
 //export each step as a div
 class GameBoard extends Component {
 // return this.props.steps.map( (step, index, stepsArray) => {
@@ -45,6 +30,14 @@ class GameBoard extends Component {
 
   }
 
+  renderLoading () {
+    return (
+      <div className="col-md-3 w-25 m-4 d-flex align-items-center justify-content-center">
+        <img className="img img-fluid" src="https://cdn.dribbble.com/users/160117/screenshots/3197970/main.gif" />
+      </div>
+    )
+  }
+
   render() {
     //check if steps array has reached its full length of 6. If not, add a "next" button.
 
@@ -56,9 +49,11 @@ class GameBoard extends Component {
       nextButton = (
         <div className="col-md-3 w-25 m-4 d-flex align-items-center justify-content-center">
           <button className="btn btn-info"
-            onClick={() => threadLength % 2
+            onClick={() => {
+              threadLength % 2
               ? this.props.fetchImage(lastStep.text)
-              : this.props.fetchCaption(lastStep.url)}>
+              : this.props.fetchCaption(lastStep.url)}
+            }>
             Next
           </button>
         </div>
