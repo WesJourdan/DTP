@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import GameBoard from "./components/game-board";
 import SearchBar from "./components/search-bar";
 import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -24,7 +25,7 @@ const App = () => {
   return  (
     <div className="container">
       <SearchBar />
-      {/* <GameBoard /> */}
+      <GameBoard />
     </div>
   );
 }

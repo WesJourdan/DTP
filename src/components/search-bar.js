@@ -24,7 +24,7 @@ class SearchBar extends Component {
 
   render () {
     return (
-        <form onSubmit={this.onFormSubmit.bind(this)}>
+        <form className="text-center m-3" onSubmit={this.onFormSubmit.bind(this)}>
           <input
             type="text"
             value={this.state.value}
