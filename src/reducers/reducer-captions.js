@@ -6,7 +6,16 @@ export default function(state = {steps: []}, action) {
 
   switch (action.type) {
     case FETCH_CAPTION:
-      console.log(action.payload);
+
+      let caption = action.payload.data.description.captions[0].text;
+      console.log(caption);
+
+        if (caption) {
+          let newSteps = [...state.steps, {text: caption, type: "caption"}]
+          console.log({...state, steps: newSteps});
+          return {...state, steps: newSteps};
+        }
+
     default:
       return state;
   }
