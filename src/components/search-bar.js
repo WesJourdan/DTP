@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { fetchImage, fetchCaption, initialSearch } from "../actions";
+import { initialSearch, resetGame } from "../actions";
 
 class SearchBar extends Component {
   //allow SearchBar to have local state because passing search input to the store character by character is overkill. See: https://github.com/reactjs/redux/issues/1287
@@ -13,6 +13,7 @@ class SearchBar extends Component {
 
   onInputChange(event) {
     this.setState({ term: event.target.value });
+
   }
 
   onFormSubmit(event) {
@@ -24,23 +25,29 @@ class SearchBar extends Component {
 
   render () {
     return (
-        <form className="text-center m-3" onSubmit={this.onFormSubmit.bind(this)}>
+      <div className="text-center">
+        <form className="m-3 d-inline" onSubmit={this.onFormSubmit.bind(this)}>
           <input
             type="text"
-            value={this.state.value}
+            value={this.state.term}
             placeholder="Enter a search term"
             onChange={this.onInputChange}
           />
           <span className="input-group-btn">
             <button type="submit" className="btn btn-primary">Submit</button>
           </span>
+
         </form>
+        <span>
+          <button onClick={this.props.resetGame.bind(this)} type="submit" className="btn btn-danger">Reset Game</button>
+        </span>
+      </div>
     )
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchImage, initialSearch }, dispatch);
+  return bindActionCreators({ initialSearch, resetGame }, dispatch);
 }
 
 

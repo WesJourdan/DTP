@@ -8,6 +8,7 @@ export default function(state = [], action) {
 
   switch (action.type) {
     case INITIAL_SEARCH:
+    console.log(action)
       return [...state, {text: action.payload, type: "caption"}]
     case FETCH_IMAGE:
       let imageArray = action.payload.data.items
