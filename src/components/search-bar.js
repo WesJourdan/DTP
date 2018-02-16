@@ -35,7 +35,7 @@ class SearchBar extends Component {
     return (
 
       <div className="text-center">
-        <h1>Digital Telephone Pictionary Game</h1>
+        <h1>Digital Telephone Pictionary</h1>
         <h5>Please choose the number of turns you want and enter a search term to start the game.</h5>
         <form className="m-3 d-inline" onSubmit={this.onFormSubmit.bind(this)}>
 
