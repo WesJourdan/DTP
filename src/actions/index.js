@@ -18,8 +18,14 @@ export function fetchImage(searchTerm) {
   };
 }
 
+
 export function fetchCaption(imageUrl) {
-  const request = axios.get(`${IMAGE_ROOT_URL}key=${googleApiKey}&${cx}&q=${imageUrl}&searchType=image`);
+  const request = axios({
+  method: 'post',
+  url: CAPTION_ROOT_URL,
+  data: {"url":imageUrl},
+  headers: {"Ocp-Apim-Subscription-Key": azureApiKey}
+  })
   console.log(request);
   return {
     type: FETCH_CAPTION,
@@ -27,21 +33,6 @@ export function fetchCaption(imageUrl) {
   };
 
 }
-
-// export function fetchCaption(imageUrl) {
-//   const request = axios({
-//   method: 'post',
-//   url: CAPTION_ROOT_URL,
-//   data: {"url":imageUrl},
-//   headers: {"Ocp-Apim-Subscription-Key": azureApiKey}
-//   })
-//   console.log(request);
-//   return {
-//     type: FETCH_CAPTION,
-//     payload: request
-//   };
-//
-// }
 
 // export function handleNextStep(steps) {
 //   //check length of store's steps array. if array is filled (for now - length = 6), stop here.
@@ -59,4 +50,3 @@ export function fetchCaption(imageUrl) {
 
 // //set handleNextStep to run whenever store's steps array is updated.
 // store.subscribe(handleNextStep);
-fetchCaption("cats");
