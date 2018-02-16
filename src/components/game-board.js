@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { fetchImage, fetchCaption } from "../actions/index";
+import { bindActionCreators } from "redux";
 
 //use the version of steps below for testing purposes only. then change steps back to this.props.steps
 let steps = [
@@ -20,7 +22,6 @@ steps.push({type: 'image', url: 'http://cdn2-www.dogtime.com/assets/uploads/2011
 class GameBoard extends Component {
 // return this.props.steps.map( (step, index, stepsArray) => {
   renderSteps() {
-  //set first and second rows manually
     return steps.map( (step, index) => {
   //steps are either images or captions. render them based on type.
       let stepNode = null;
@@ -46,17 +47,23 @@ class GameBoard extends Component {
   render() {
     //check if steps array has reached its full length of 6. If not, add a "next" button.
     let nextButton = null;
-    // if (this.props.steps.length < 6) {
-    if (steps.length < 6) {
+    let threadLength = steps.length;
+    let lastStep = steps[threadLength - 1];
+    if (threadLength < 6) {
       nextButton = (
         <div className="col-md-3 w-25 m-4 d-flex align-items-center justify-content-center">
-          <button className="btn btn-info">Next</button>
+          <button className="btn btn-info"
+            onClick={() => threadLength % 2
+              ? this.props.fetchImage(lastStep)
+              : this.props.fetchCaption(lastStep)}>
+            Next
+          </button>
         </div>
     )};
 
     return (
       <div>
-        <div className="row d-flex justify-content-center">
+        <div className="row d-flex h-50 justify-content-center">
           {this.renderSteps()}
           {nextButton}
         </div>
@@ -69,7 +76,12 @@ function mapStateToProps({ steps }) {
 }
 
 
-export default connect(mapStateToProps)(GameBoard);
+function mapDispatchToProps(dispatch) {
+
+  return bindActionCreators({ fetchImage, fetchCaption },  dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameBoard);
 
 
   //to test code without accessing store, comment out mapStateToProps and use the export statement below instead.
