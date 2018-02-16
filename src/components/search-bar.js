@@ -5,9 +5,10 @@ import { fetchImage } from "../actions";
 
 class SearchBar extends Component {
   //allow SearchBar to have local state because passing search input to the store character by character is overkill. See: https://github.com/reactjs/redux/issues/1287
-  constructor () {
-    super ();
+  constructor (props) {
+    super (props);
     this.state = {term: ''};
+    this.onInputChange = this.onInputChange.bind(this)
   }
 
   onInputChange(event) {
@@ -17,13 +18,13 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     //call appropriate function. for now, that's the image fetch function.
-    this.props.fetchImage(this.state.term);
+    this.props.fetchImage(this.state.term)
     this.setState({ term: '' });
   }
 
   render () {
     return (
-        <form onSubmit={this.onFormSubmit}>
+        <form onSubmit={this.onFormSubmit.bind(this)}>
           <input
             type="text"
             value={this.state.value}
@@ -41,5 +42,6 @@ class SearchBar extends Component {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchImage }, dispatch);
 }
+
 
 export default connect(null, mapDispatchToProps)(SearchBar);
