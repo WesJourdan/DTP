@@ -7,9 +7,11 @@ import reducers from "./reducers";
 import rootReducer from "./reducers";
 import thunk from 'redux-thunk';
 
+
 import GameBoard from "./components/game-board";
 import SearchBar from "./components/search-bar";
 import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
 import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
@@ -23,7 +25,7 @@ const store = createStoreWithMiddleware(reducers);
 
 const App = () => {
   return  (
-    <div className="container">
+    <div className="container-fluid">
       <SearchBar />
       <GameBoard />
     </div>
