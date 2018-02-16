@@ -11,6 +11,7 @@ const CAPTION_ROOT_URL = `https://eastus.api.cognitive.microsoft.com/vision/v1.0
 
 export function fetchImage(searchTerm) {
   const request = axios.get(`${IMAGE_ROOT_URL}key=${googleApiKey}&${cx}&q=${searchTerm}&searchType=image`);
+  console.log(request);
   return {
     type: FETCH_IMAGE,
     payload: request
