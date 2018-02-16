@@ -1,11 +1,13 @@
 import _ from "lodash";
 import {FETCH_IMAGE} from "../actions";
 import {FETCH_CAPTION} from "../actions";
-
+import {INITIAL_SEARCH} from "../actions";
 
 export default function(state = [], action) {
 
   switch (action.type) {
+    case INITIAL_SEARCH:
+      return [...state, {text: action.payload, type: "caption"}]
     case FETCH_IMAGE:
       let imageArray = action.payload.data.items
       for (let i = 0; i < imageArray.length; i++ ) {
@@ -21,9 +23,9 @@ export default function(state = [], action) {
       let caption = action.payload.data.description.captions[0].text;
       console.log(caption);
       if (caption) {
-        let newSteps = [...state.steps, {text: caption, type: "caption"}]
-        console.log({...state, steps: newSteps});
-        return {...state, steps: newSteps};
+        let newSteps = [...state, {text: caption, type: "caption"}]
+        console.log(newSteps);
+        return newSteps;
       }
     default:
       return state;
