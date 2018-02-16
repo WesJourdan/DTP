@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { fetchImage, fetchCaption } from "../actions";
+import { fetchImage, fetchCaption, initialSearch } from "../actions";
 
 class SearchBar extends Component {
   //allow SearchBar to have local state because passing search input to the store character by character is overkill. See: https://github.com/reactjs/redux/issues/1287
@@ -18,7 +18,7 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     //call appropriate function. for now, that's the image fetch function.
-    this.props.fetchImage(this.state.term)
+    this.props.initialSearch(this.state.term);
     this.setState({ term: '' });
   }
 
@@ -40,7 +40,7 @@ class SearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchImage }, dispatch);
+  return bindActionCreators({ fetchImage, initialSearch }, dispatch);
 }
 
 
