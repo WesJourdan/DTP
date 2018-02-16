@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { initialSearch, resetGame } from "../actions";
+import { initialSearch, resetGame, setNumberOfSteps } from "../actions";
 
 class SearchBar extends Component {
   //allow SearchBar to have local state because passing search input to the store character by character is overkill. See: https://github.com/reactjs/redux/issues/1287
@@ -27,6 +27,7 @@ class SearchBar extends Component {
     event.preventDefault();
     //call appropriate function. for now, that's the image fetch function.
     this.props.initialSearch(this.state.term);
+    this.props.setNumberOfSteps(this.state.numberOfSteps);
     this.setState({ term: '' });
   }
 
@@ -45,9 +46,9 @@ class SearchBar extends Component {
 
           <select className="form-control d-inline w-25" value={this.state.numberOfSteps} onChange={this.handleChange.bind(this)}>
             <option value="6">6 steps</option>
-            <option value="8">8 steps</option>
-            <option value="10">10 steps</option>
+            <option value="9">9 steps</option>
             <option value="12">12 steps</option>
+            <option value="15">15 steps</option>
           </select>
 
           <span className="input-group-btn">
@@ -65,7 +66,7 @@ class SearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ initialSearch, resetGame }, dispatch);
+  return bindActionCreators({ initialSearch, resetGame, setNumberOfSteps }, dispatch);
 }
 
 
