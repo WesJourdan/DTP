@@ -32,18 +32,19 @@ export function fetchCaption(imageUrl) {
   };
 }
 
-// export function handleNextStep(steps) {
-//   //check length of store's steps array. if array is filled (for now - length = 6), stop here.
-//   if (steps.length >= 6) {return};
-//   //get last element of store's steps array. if type = caption, call fetch image with step.text.
-//   let lastStep = steps[steps.length - 1];
-//   if (lastStep.type === 'caption') {
-//     store.dispatch(fetchCaption(lastStep.text));
-//   //else, it's an image. call fetch caption with step.url
-//   } else {
-//     store.dispatch(fetchImage(lastStep.url));
-//   }
-// }
+export function handleNextStep(steps) {
+  console.log(steps)
+  //check length of store's steps array. if array is filled (for now: length = 6), stop here.
+  if (steps.length >= 6) {return};
+  //get last element of store's steps array. if type = caption, call fetch image with step.text.
+  let lastStep = steps[steps.length - 1];
+  if (lastStep.type === 'caption') {
+    (fetchCaption(lastStep.text));
+  //else, it's an image. call fetch caption with step.url
+  } else {
+    (fetchImage(lastStep.url));
+  }
+}
 
 
 // //set handleNextStep to run whenever store's steps array is updated.
