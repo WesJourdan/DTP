@@ -11,7 +11,6 @@ import thunk from 'redux-thunk';
 import GameBoard from "./components/game-board";
 import SearchBar from "./components/search-bar";
 import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.css';
 import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
