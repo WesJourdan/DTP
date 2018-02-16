@@ -18,7 +18,7 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     //call appropriate function. for now, that's the image fetch function.
-    this.props.fetchImage(this.state.term)
+    this.props.fetchCaption(this.state.term)
     this.setState({ term: '' });
   }
 
@@ -40,7 +40,7 @@ class SearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchImage }, dispatch);
+  return bindActionCreators({ fetchCaption }, dispatch);
 }
 
 
