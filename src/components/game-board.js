@@ -46,6 +46,7 @@ class GameBoard extends Component {
 
   render() {
     //check if steps array has reached its full length of 6. If not, add a "next" button.
+    console.log(this.props);
     let nextButton = null;
     let threadLength = steps.length;
     let lastStep = steps[threadLength - 1];
@@ -71,8 +72,8 @@ class GameBoard extends Component {
     );
   }
 }
-function mapStateToProps({ steps }) {
-  return { steps };
+function mapStateToProps( state ) {
+  return { state };
 }
 
 
