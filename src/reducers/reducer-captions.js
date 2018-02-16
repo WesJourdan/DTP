@@ -11,7 +11,7 @@ export default function(state = {steps: []}, action) {
       console.log(caption);
 
         if (caption) {
-          let newSteps = [...state.steps, {text: caption, type: "caption"}]
+          let newSteps = [...state.steps, {text: caption, stepType: "caption"}]
           console.log({...state, steps: newSteps});
           return {...state, steps: newSteps};
         }

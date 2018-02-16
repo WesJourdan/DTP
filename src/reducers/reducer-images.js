@@ -1,4 +1,3 @@
-import _ from "lodash";
 import {FETCH_IMAGE} from "../actions";
 
 
@@ -11,9 +10,10 @@ export default function(state = {steps: []}, action) {
         console.log("in loop");
         let image = imageArray[i];
         if (image.mime == "image/jpeg") {
-          let newSteps = [...state.steps, {url: image.link, type: "image"}]
-          console.log({...state, steps: newSteps});
-          return {...state, steps: newSteps};
+          let newSteps = state.steps.concat([{url: image.link, stepType: "image"}]);
+          console.log(newSteps)
+          // console.log({...state, steps: newSteps});
+          return {steps: newSteps};
         }
       };
     default:
