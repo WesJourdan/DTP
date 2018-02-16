@@ -13,14 +13,14 @@ class GameBoard extends Component {
       let stepNode = null;
       if (step.type === 'image'){
         stepNode = (
-          <div className="col-md-3 w-50 m-4 d-flex align-items-center step-node" key={step.index}>
+          <div className="col-md-3 w-50 m-4 d-flex align-items-center step-node border border-primary rounded" key={step.index}>
               <img className="img img-fluid" src={step.url} />
           </div>
         );
       } else {
         stepNode = (
-          <div className="col-md-3 w-25 m-4 d-flex align-items-center justify-content-center step-node" key={step.text}>
-            <p className="text-center">{step.text}</p>
+          <div className="col-md-3 w-25 m-4 d-flex align-items-center justify-content-center step-node border border-primary rounded" key={step.text}>
+            <h3 className="text-center">{step.text}</h3>
           </div>
 
         )
