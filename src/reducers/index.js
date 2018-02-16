@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
-import ImagesReducer from "./reducer-images";
-import CaptionsReducer from "./reducer-captions";
+import StepsReducer from "./reducer-steps";
 
 const rootReducer = combineReducers({
-  caption: CaptionsReducer,
-  image: ImagesReducer,
+  steps: StepsReducer
 });
 
 export default rootReducer;

@@ -4,7 +4,7 @@ import {cx} from "../private/api-keys";
 import {azureApiKey} from "../private/api-keys";
 
 export const FETCH_IMAGE = "fetch_image";
-export const FETCH_CAPTION = "fetch_caption"
+export const FETCH_CAPTION = "fetch_caption";
 
 const IMAGE_ROOT_URL = "https://www.googleapis.com/customsearch/v1?";
 const CAPTION_ROOT_URL = `https://eastus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description`;
