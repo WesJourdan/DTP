@@ -2,6 +2,7 @@ import _ from "lodash";
 import {FETCH_IMAGE} from "../actions";
 import {FETCH_CAPTION} from "../actions";
 import {INITIAL_SEARCH} from "../actions";
+import {RESET_GAME} from "../actions";
 
 export default function(state = [], action) {
 
@@ -27,6 +28,8 @@ export default function(state = [], action) {
         console.log(newSteps);
         return newSteps;
       }
+    case RESET_GAME:
+      return [];
     default:
       return state;
   }
